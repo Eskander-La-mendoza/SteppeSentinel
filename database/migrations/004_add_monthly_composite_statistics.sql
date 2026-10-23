@@ -1,0 +1,11 @@
+ALTER TABLE ndvi_observations ADD COLUMN IF NOT EXISTS ndvi_p10 DOUBLE PRECISION;
+ALTER TABLE ndvi_observations ADD COLUMN IF NOT EXISTS ndvi_p90 DOUBLE PRECISION;
+ALTER TABLE ndvi_observations ADD COLUMN IF NOT EXISTS vegetation_ndvi_mean DOUBLE PRECISION;
+ALTER TABLE ndvi_observations ADD COLUMN IF NOT EXISTS vegetation_ndvi_median DOUBLE PRECISION;
+ALTER TABLE ndvi_observations ADD COLUMN IF NOT EXISTS vegetation_ndvi_p10 DOUBLE PRECISION;
+ALTER TABLE ndvi_observations ADD COLUMN IF NOT EXISTS vegetation_ndvi_p90 DOUBLE PRECISION;
+ALTER TABLE ndvi_observations ADD COLUMN IF NOT EXISTS vegetation_coverage_percentage DOUBLE PRECISION;
+ALTER TABLE ndvi_observations ADD COLUMN IF NOT EXISTS composite_scene_count INTEGER NOT NULL DEFAULT 1;
+ALTER TABLE ndvi_observations ADD COLUMN IF NOT EXISTS composite_method TEXT NOT NULL DEFAULT 'single-scene';
+ALTER TABLE ndvi_observations ADD COLUMN IF NOT EXISTS source_scene_ids UUID[] NOT NULL DEFAULT '{}';
+ALTER TABLE ndvi_observations ADD COLUMN IF NOT EXISTS source_acquisition_dates TIMESTAMPTZ[] NOT NULL DEFAULT '{}';

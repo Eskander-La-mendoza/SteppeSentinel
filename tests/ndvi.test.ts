@@ -1,0 +1,2 @@
+import { describe,expect,it } from "vitest";import{calculateNdmi,calculateNdvi,extractFeatures}from"../packages/ml/src/index.js";
+describe("spectral indices",()=>{it("calculates NDVI and NDMI from reflectance",()=>{expect(calculateNdvi(.7,.1)).toBeCloseTo(.75);expect(calculateNdmi(.7,.3)).toBeCloseTo(.4)});it("handles division by zero and invalid masks",()=>{expect(calculateNdvi(0,0)).toBeNull();expect(extractFeatures({B02:.1,B03:.1,B04:.1,B08:.7,B11:.3,B12:.2,valid:false})).toBeNull()})});

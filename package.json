@@ -1,0 +1,25 @@
+{
+  "name": "pasturevision",
+  "private": true,
+  "version": "1.0.0",
+  "workspaces": ["apps/*", "packages/*"],
+  "scripts": {
+    "build": "npm run build:packages && npm run build:apps",
+    "build:packages": "npm run build --workspace @pasturevision/shared && npm run build --workspace @pasturevision/gis && npm run build --workspace @pasturevision/satellite && npm run build --workspace @pasturevision/ml",
+    "build:apps": "npm run build --workspace @pasturevision/backend && npm run build --workspace @pasturevision/worker && npm run build --workspace @pasturevision/frontend",
+    "dev": "npm run dev --workspace @pasturevision/backend",
+    "dev:frontend": "npm run dev --workspace @pasturevision/frontend",
+    "dev:worker": "npm run dev --workspace @pasturevision/worker",
+    "typecheck": "npm run build:packages && npm run typecheck --workspace @pasturevision/backend && npm run typecheck --workspace @pasturevision/worker && npm run typecheck --workspace @pasturevision/frontend",
+    "test": "vitest run --config vitest.config.mjs",
+    "test:watch": "vitest --config vitest.config.mjs",
+    "db:migrate": "npm run migrate --workspace @pasturevision/backend",
+    "db:seed": "npm run seed --workspace @pasturevision/backend"
+  },
+  "devDependencies": {
+    "@types/node": "^22.15.0",
+    "typescript": "^5.8.3",
+    "vitest": "^5.0.5"
+  },
+  "engines": { "node": ">=22" }
+}
